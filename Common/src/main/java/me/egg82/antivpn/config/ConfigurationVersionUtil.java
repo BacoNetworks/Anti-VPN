@@ -348,6 +348,7 @@ public class ConfigurationVersionUtil {
 
         // Add teoh
         config.node("sources", "teoh", "enabled").set(Boolean.TRUE);
+        config.node("sources", "teoh",  "key").set("");
 
         // Add iphunter
         config.node("sources", "iphunter", "enabled").set(Boolean.FALSE);

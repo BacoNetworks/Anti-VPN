@@ -54,7 +54,7 @@ public class PlayerEvents extends EventHolder {
         }
 
         events.add(
-            (useLoginEvent ? BungeeEvents.subscribe(plugin, LoginEvent.class, EventPriority.LOW)
+            (useLoginEvent ? BungeeEvents.subscribe(plugin, LoginEvent.class, EventPriority.HIGH)
                 : BungeeEvents.subscribe(plugin, PreLoginEvent.class, EventPriority.HIGH))
                         .handler(e -> e.registerIntent(plugin))
                         .handler(e -> POOL.submit(() -> {
@@ -73,13 +73,13 @@ public class PlayerEvents extends EventHolder {
         );
 
         events.add(
-                BungeeEvents.subscribe(plugin, PostLoginEvent.class, EventPriority.HIGHEST)
+                BungeeEvents.subscribe(plugin, LoginEvent.class, EventPriority.HIGHEST)
                         .handler(e -> {
-                            BungeePlatform.addUniquePlayer(e.getPlayer().getUniqueId());
+                            BungeePlatform.addUniquePlayer(e.getConnection().getUniqueId());
                             try {
-                                BungeePlatform.addUniqueIp(InetAddress.getByName(getIp(e.getPlayer().getAddress())));
+                                BungeePlatform.addUniqueIp(InetAddress.getByName(getIp(e.getConnection().getAddress())));
                             } catch (UnknownHostException ex) {
-                                logger.warn("Could not create InetAddress for " + getIp(e.getPlayer().getAddress()));
+                                logger.warn("Could not create InetAddress for " + getIp(e.getConnection().getAddress()));
                             }
                         })
         );

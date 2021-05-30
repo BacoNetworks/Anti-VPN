@@ -259,13 +259,16 @@ sources:
 
   # https://ip.teoh.io/vpn-detection
   # NOTE: This info is old
+  # https://vpnapi.io/
+  # NOTE: Updated to reflect teoh move
   # Results updated Jul 7, 2019
   # Error rate: 10%
   # NordVPN detection rate: 61.90%
-  # Cryptostorm detection rate: 100%
   # False-flagged homes: 0%
   teoh:
     enabled: true
+    # API key to use (Required for this service, free one available at https://vpnapi.io/dashboard)
+    key: ''
 
 mcleaks:
   # The amount of time to globally cache results
